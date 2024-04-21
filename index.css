@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+
+/*sidebar 설정*/
+
+.side-space{
+    position: fixed;
+    background: white;
+    width: 600px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    float: left;
+}
+
+.sidebar{
+    background: greenyellow; /*임시색이므로 나중에 흰색으로 바꾸기*/
+    width: 300px;
+    height: 100%;
+    float: right;
+}
+
+.sidebar-line{
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.sidebar h1{
+    font-size: 40px;
+    padding: 20px;
+}
+
+.sidebar ul li{
+    margin: 25px 0;
+    list-style:none;
+}
+
+.sidebar ul li a{
+    color: black;
+    text-decoration-line: none;
+    padding: 0 30px;
+    font-size: 30px;
+}
+
+.sidebar a{
+    margin: 25px 0;
+    font-size: 5;
+}
+
+.main-space{
+    background: yellow;
+    width: 50px;
+    height: 500px;
+    overflow: hidden;
+}
+
