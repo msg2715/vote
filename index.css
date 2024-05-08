@@ -28,7 +28,7 @@ body{
     background: white; /*임시색이므로 나중에 흰색으로 바꾸기*/
     width: 300px;
     height: 100%;
-    float: right;
+    float: right; /* 오른쪽으로 정렬 */
 }
 
 .sidebar-line{
@@ -65,23 +65,48 @@ body{
     margin-left: 600px;
     position: static;
     background: white;
-    width: 720px;
+    width: 850px;
     height: 100%;
 }
+
 
 .content{
     width: 100%;
     height: 100%;
     border: 1px solid rgba(0, 0, 0, .2);
     margin-top: -1px;
+    overflow: auto;
 }
 
 .profile-image{
-    width: 50px;
+    width: 6%;
     height: 100%;
+    float: left;
 }
 
 .profile-image img{
-    width: 100%;
+    width: 40px;
     aspect-ratio: auto 1/1;
+    border-radius: 70%;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.content-main{
+    width: 91%;
+    float: left;
+    padding: 10px;
+}
+
+.content-information{
+    display: inline-block;
+    justify-content: flex-start;
+}
+
+.content-nickname{
+    width: 80px;
+}
+
+.content-time{
+    width: 80px;
 }
