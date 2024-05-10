@@ -9,17 +9,21 @@ body{
     font-family: sans-serif;
 }
 
+html, body{
+    height: 99.97%;
+}
 
+.grid{
+    display:grid;
+    grid-template-columns: 600px 2fr;
+}
 
 /* 왼쪽 사이드바 설정 */
 
 .side-space{
-    position: fixed; /* 사이드바의 위치고정 */
     background: white;
     width: 600px;
     height: 100%;
-    top: 0;
-    left: 0;
     z-index: 1;
     float: left;
 }
@@ -57,22 +61,25 @@ body{
     font-size: 5;
 }
 
-
+.side-profile{
+    width: 300px;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+    margin-top: 364px;
+    float: left;
+    display: flex;
+}
 
 /* 메인화면 설정 */
 
 .main-space{
-    margin-left: 600px;
-    position: static;
     background: white;
-    width: 850px;
+    flex: 1;
     height: 100%;
+    overflow-y: auto;
 }
 
-
 .content{
-    width: 100%;
-    height: 100%;
+    width: 850px;
     border: 1px solid rgba(0, 0, 0, .2);
     margin-top: -1px;
     overflow: auto;
@@ -98,15 +105,39 @@ body{
     padding: 10px;
 }
 
-.content-information{
-    display: inline-block;
-    justify-content: flex-start;
+.contnet-information{
+    margin-bottom: 4px;
 }
 
 .content-nickname{
     width: 80px;
+    font-size: 14px;
 }
 
 .content-time{
     width: 80px;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.content-text{
+    width: 91%;
+    margin-bottom: 10px;
+}
+
+.vote{
+    padding-bottom: 10px;
+}
+
+.choice-box{
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid rgba(0, 0, 0, .4);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.choice-box a{
+    margin-left: 8px;
 }
