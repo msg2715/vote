@@ -40,11 +40,13 @@
 				</li>
 			</ul>
 			<div class="side-profile">
-				<div class="profile-image">
-					<img src="img/blank.png">
-				</div>
-				<a href="login">로그인</a>
-				<a href="signup">회원가입</a>
+				<% if(userNickname) { %>
+					<a><%= userNickname %>님 안녕하세요!</a>
+					<a href="logout">로그아웃</a>
+				<% } else { %>
+					<a href="login">로그인</a>
+					<a href="signup">회원가입</a>
+				<% } %>
 			</div>
 		</div>
 	</div>
@@ -55,8 +57,7 @@
 			</div>
 			<div class="content-main">
 				<div class="contnet-information">
-					<a class="content-nickname">익명</a>
-					<a class="content-time">1시간 전</a>
+					<a class="content-nickname"></a>
 				</div>
 				<div class="content-text">가장 좋아하는 과일은?</div>
 				<div class="vote">
