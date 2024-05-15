@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
 	<script src="https://kit.fontawesome.com/9791b7f78d.js" crossorigin="anonymous"></script> <!-- font awesome 사용-->
     <title>vote!</title>
 </head>
@@ -15,7 +15,7 @@
 			<ul class="nav">
 				<li>
 					<a href="/">
-						<spen style="font-size: 50px; font-family: Century Gothic, sans-serif;">vote!</spen>
+						<span style="font-size: 50px; font-family: Century Gothic, sans-serif;">vote!</span>
 					</a>
 				</li>
 				<div class="sidebar-line"></div>
@@ -42,39 +42,37 @@
 			<div class="side-profile">
 				<% if(userNickname) { %>
 					<a><%= userNickname %>님 안녕하세요!</a>
-					<a href="logout">로그아웃</a>
+					<a href="logout" class="border">로그아웃</a>
 				<% } else { %>
-					<a href="login">로그인</a>
-					<a href="signup">회원가입</a>
+					<a href="login" class="border">로그인</a>
+					<a href="signup" class="border">회원가입</a>
 				<% } %>
 			</div>
 		</div>
 	</div>
 	<div class="main-space">
+		<% for(let i=0; i<voteInfo.length; i++) { %>
 		<div class="content">
 			<div class="profile-image">
 				<img src="img/blank.png">
 			</div>
 			<div class="content-main">
 				<div class="contnet-information">
-					<a class="content-nickname"></a>
+					<a class="content-nickname"><%= voteInfo[i].nickname %></a>
 				</div>
-				<div class="content-text">가장 좋아하는 과일은?</div>
+				<div class="content-text"><%= voteInfo[i].content %></div>
 				<div class="vote">
-					<div class="choice-box">
-						<a>사과</a>
-					</div>
-					<div class="choice-box">
-						<a>복숭아</a>
-					</div>
-					<div class="choice-box">
-						<a>수박</a>
-					</div>
-					<div class="choice-box">
-						<a>포도</a>
-					</div>
+					<% if(voteInfo[i].voteItem.length) %>
+						<% for(let q=0; q<voteInfo[i].voteItem.length; q++) { %>
+						<div class="choice-box">
+							<a><%= voteInfo[i].voteItem[q] %></a>
+						</div>
+						<% }%>
+					<% }%>
 				</div>
 			</div>
 		</div>
+		<% }%>
+	</div>
 </body>
 </html>

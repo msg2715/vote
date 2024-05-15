@@ -1,3 +1,176 @@
+/* 초기화 */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+html, body{
+    height: 99.97%;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns: 600px 2fr;
+}
+
+/* 왼쪽 사이드바 설정 */
+
+.side-space{
+    background: white;
+    width: 600px;
+    height: 100%;
+    z-index: 1;
+    float: left;
+}
+
+.sidebar{
+    background: white; /*임시색이므로 나중에 흰색으로 바꾸기*/
+    width: 300px;
+    height: 100%;
+    float: right; /* 오른쪽으로 정렬 */
+}
+
+.sidebar-line{
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.sidebar h1{
+    font-size: 40px;
+    padding: 20px;
+}
+
+.sidebar ul li{
+    margin: 25px 0;
+    list-style:none;
+}
+
+.sidebar ul li a{
+    color: black;
+    text-decoration-line: none;
+    padding: 0 30px;
+    font-size: 30px;
+}
+
+.sidebar a{
+    margin: 25px 0;
+    font-size: 5;
+}
+
+.side-profile{
+    width: 300px;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+    margin-top: 364px;
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+
+.side-profile a{
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    text-decoration-line: none;
+    color: black;
+}
+
+.border{
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+/* 메인화면 설정 */
+
+.main-space{
+    background: white;
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+}
+
 .content{
-    
+    width: 850px;
+    height: 99.897%;
+    border: 1px solid rgba(0, 0, 0, .2);
+    margin-top: -1px;
+}
+
+.profile-image{
+    width: 6%;
+    height: 100%;
+    float: left;
+}
+
+.profile-image img{
+    width: 40px;
+    aspect-ratio: auto 1/1;
+    border-radius: 70%;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.content-main{
+    width: 91%;
+    float: left;
+    padding: 10px;
+}
+
+.contnet-information{
+    margin-bottom: 4px;
+}
+
+.content-nickname{
+    width: 80px;
+    font-size: 14px;
+}
+
+.content-input {
+    width: 91%;
+    resize: none;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 0;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.vote{
+    padding-bottom: 10px;
+}
+
+.vote button{
+    padding: 4px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.choice-box{
+    width: 91%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid rgba(0, 0, 0, .4);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.choice-box input{
+    width: 90%;
+    height: 85%;
+    line-height: 85%;
+    border: none;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.upload {
+    margin-top: 12px;
+    padding: 4px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
 }

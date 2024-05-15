@@ -11,6 +11,9 @@ const { MongoClient } = require('mongodb')
 app.set('view engine', 'ejs')
 app.use(express.static("./public"))
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // db연결 & 서버실행
 let db
@@ -27,17 +30,24 @@ new MongoClient(url).connect().then((client)=>{
 
 
 // 라우트 정의
-app.get('/', (req, res)=>{
+app.get('/', async(req, res)=>{
+    let voteInfo = await db.collection('post').find().toArray()
     const userNickname = req.cookies.userNickname || null
-    res.render('index', { userNickname: userNickname })
+    res.render('index', { userNickname: userNickname, voteInfo: voteInfo })
 })
 
 app.get('/search', (req, res)=>{
-    res.render('search')
+    const userNickname = req.cookies.userNickname || null
+    res.render('search', { userNickname: userNickname })
 })
 
 app.get('/make', (req, res)=>{
-    res.render('make')
+    const userNickname = req.cookies.userNickname || null
+    if (!userNickname) {
+        res.send('<script>alert("로그인을 해야 사용할 수 있는 기능입니다!."); location.href="/login";</script>')
+    } else {
+        res.render('make', { userNickname: userNickname })
+    }
 })
 
 app.get('/login', (req, res)=>{
@@ -50,7 +60,7 @@ app.post('/login', async(req, res) => {
         res.send('<script>alert("아이디 또는 비밀번호가 틀렸습니다."); location.href="/login";</script>')
     }else{
         if(userinfo.pw == req.body.password){
-            res.cookie('userNickname', userinfo.nickname, { maxAge: 900000, path: '/' })
+            res.cookie('userNickname', userinfo.nickname, { maxAge: 60000*60, path: '/' })
             res.send('<script>alert("로그인 성공!"); location.href="/";</script>')
         }else{
             res.send('<script>alert("아이디 또는 비밀번호가 틀렸습니다."); location.href="/login";</script>')
@@ -63,9 +73,14 @@ app.get('/signup', (req, res)=>{
 })
 
 app.post('/signup', async(req, res)=>{
-    let userinfo = await db.collection('user').findOne({ userId: req.body.id })
-    if (userinfo) {
-        res.send('<script>alert("이미 있는 아이디입니다."); location.href="/signup";</script>')
+    let userId = await db.collection('user').findOne({ userId: req.body.id })
+    let userNickname = await db.collection('user').findOne({ nickname: req.body.nickname })
+    if (userId || userNickname) {
+        if (userId) {
+            res.send('<script>alert("이미 있는 아이디입니다."); location.href="/signup";</script>')
+        } else{
+            res.send('<script>alert("이미 있는 닉네임입니다."); location.href="/signup";</script>')
+        }
     }else{
         db.collection('user').insertOne({
             userId : req.body.id,
@@ -78,4 +93,31 @@ app.post('/signup', async(req, res)=>{
 
 app.get('/logout', (req, res) => {
     res.clearCookie('userNickname', { path: '/' }).redirect('/')
+})
+
+app.post('/upload', (req, res) => {
+    const userNickname = req.cookies.userNickname || null
+
+    if (!userNickname) {
+        return res.send('<script>alert("로그인이 필요합니다."); location.href="/login";</script>')
+    }
+
+    
+    const VOTEITEM = [];
+    
+    for (let i = 1; i <= 5; i+=1) {
+        const voteItemName = `vote${i}`;
+        if (req.body[voteItemName]) {
+            VOTEITEM.push(req.body[voteItemName]);
+        }
+    }
+
+    db.collection('post').insertOne({
+        nickname : userNickname,
+        content : req.body.content,
+        voteItem: VOTEITEM
+    })
+    res.send('<script>alert("업로드 완료!"); location.href="/";</script>')
+
+
 })

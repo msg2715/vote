@@ -67,8 +67,20 @@ html, body{
     margin-top: 364px;
     float: left;
     display: flex;
+    justify-content: center;
 }
 
+.side-profile a{
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    text-decoration-line: none;
+    color: black;
+}
+
+.border{
+    border: 1px solid rgba(0, 0, 0, .2);
+}
 /* 메인화면 설정 */
 
 .main-space{
@@ -112,12 +124,6 @@ html, body{
 .content-nickname{
     width: 80px;
     font-size: 14px;
-}
-
-.content-time{
-    width: 80px;
-    font-size: 12px;
-    font-weight: lighter;
 }
 
 .content-text{

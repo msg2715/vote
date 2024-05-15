@@ -3,40 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/make.css">
+    <link rel="stylesheet" href="/css/make.css">
 	<script src="https://kit.fontawesome.com/9791b7f78d.js" crossorigin="anonymous"></script> <!-- font awesome 사용-->
     <title>vote!</title>
 </head>
 <body class="grid">
+	<script src="/js/make.js"></script>
     <div class="side-space">
 		<div class="sidebar">
 			<ul class="nav">
 				<li>
-					<a href="index.html">
-						<spen style="font-size: 50px; font-family: Century Gothic, sans-serif;">vote!</spen>
+					<a href="/">
+						<span style="font-size: 50px; font-family: Century Gothic, sans-serif;">vote!</span>
 					</a>
 				</li>
 				<div class="sidebar-line"></div>
 				<li>
-					<a href="index.html">
+					<a href="/">
 						<i class="fa-solid fa-house"></i>
 						<span>Home</span>
 					</a>
 				</li>
 				<li>
-					<a href="search.html">
+					<a href="search">
 						<i class="fa-solid fa-magnifying-glass"></i>
 						<span>Search</span>
 					</a>
 				</li>
+				<br>
 				<li>
-					<a href="#">
-						<i class="fa-solid fa-fire"></i>
-						<span>Popular</span>
+					<a href="make" style="font-size: 27px; color: #3448fd;">
+						<i class="fa-regular fa-square-plus"></i>
+						<span>make vote</span>
 					</a>
 				</li>
-				<br>
 			</ul>
+			<div class="side-profile">
+				<% if(userNickname) { %>
+					<a><%= userNickname %>님 안녕하세요!</a>
+					<a href="logout" class="border">로그아웃</a>
+				<% } else { %>
+					<a href="login" class="border">로그인</a>
+					<a href="signup" class="border">회원가입</a>
+				<% } %>
+			</div>
 		</div>
 	</div>
 	<div class="main-space">
@@ -44,18 +54,24 @@
 			<div class="profile-image">
 				<img src="img/blank.png">
 			</div>
-			<div class="content-main">
+			<form action="/upload" method="POST" id="voteForm" class="content-main">
 				<div class="contnet-information">
-					<a class="content-nickname">익명</a>
+					<a class="content-nickname"><%= userNickname %></a>
 				</div>
-				<input class="content" type="text" placeholder="내용을 입력하세요.">
+				<textarea class="content-input" type="text" name="content" placeholder="내용을 입력하세요."></textarea>
 				<div class="vote">
 					<div class="choice-box">
-						<input type="text">
+						<input name="vote1" type="text" name="vote" placeholder="항목 입력" maxlength="30" minlength="1">
 					</div>
+					<div class="choice-box">
+						<input name="vote2" type="text" name="vote" placeholder="항목 입력" maxlength="30" minlength="1">
+					</div>
+					<button type="button"><i class="fa-solid fa-plus"></i> 투표 항목 추가</button>
+					<button type="button"><i class="fa-solid fa-trash"></i> 투표 항목 제거</button>
 				</div>
-				<button>게시하기</button>
-			</div>
+				<button type="submit" class="upload">게시하기</button>
+			</form>
 		</div>
+	</div>
 </body>
 </html>
