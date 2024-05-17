@@ -147,3 +147,17 @@ html, body{
 .choice-box a{
     margin-left: 8px;
 }
+
+.fa-hourglass-end {
+    margin-left: 5px;
+}
+
+.finished {
+    margin-left: 5px;
+}
+
+.participate {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.6);
+}

@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function upload(event) {
         event.preventDefault(); // 이벤트 객체 전달 및 기본 동작 방지
             
-        if (!confirm("업로드하시겠습니까?")) {
+        if (!confirm("업로드하시겠습니까?\n업로드 후 수정이나 삭제는 불가능합니다.")) {
             return;
         } else {
             form.submit(); // 선택된 form 제출
