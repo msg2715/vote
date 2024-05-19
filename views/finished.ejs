@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/index.css">
 	<script src="https://kit.fontawesome.com/9791b7f78d.js" crossorigin="anonymous"></script> <!-- font awesome 사용-->
     <title>vote!</title>
+	<link rel="icon" href="/img/icon.ico"/>
 </head>
 <body class="grid">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -41,8 +42,10 @@
 			</ul>
 			<div class="side-profile">
 				<% if(userNickname) { %>
-					<a><%= userNickname %>님 안녕하세요!</a>
-					<a href="logout" class="border">로그아웃</a>
+					<div style="display: flex; flex-direction: column; text-align: center;">
+						<a><%= userNickname %>님 안녕하세요!</a>
+						<a href="logout" class="border" style="width: 70px; margin: 0 auto;">로그아웃</a>
+					</div>
 				<% } else { %>
 					<a href="login" class="border">로그인</a>
 					<a href="signup" class="border">회원가입</a>
