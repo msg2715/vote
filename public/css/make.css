@@ -174,3 +174,11 @@ html, body{
     border-radius: 3px;
     font-size: 15px;
 }
+
+.finished {
+    margin-left: 5px;
+}
+
+.fa-hourglass-end {
+    margin-left: 5px;
+}

@@ -10,10 +10,6 @@
 <body class="grid">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-	<script>
-		$.ajax
-	</script>
-
     <div class="side-space">
 		<div class="sidebar">
 			<ul class="nav">
@@ -30,7 +26,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="closed">
+					<a href="finished">
 						<i class="fa-solid fa-hourglass-end"></i>
 						<span class="finished">finished</span>
 					</a>
@@ -55,24 +51,32 @@
 		</div>
 	</div>
 	<div class="main-space">
-		<% let participate = 0; %>
 		<% for(let i=0; i<voteInfo.length; i++) { %>
 		<div class="content">
 			<div class="profile-image">
 				<img src="img/blank.png">
 			</div>
 			<div class="content-main">
-				<div class="contnet-information">
+				<div class="content-information">
 					<a class="content-nickname"><%= voteInfo[i].nickname %></a>
 				</div>
-				<div class="content-text"><%= voteInfo[i].content %></div>
-				<div class="participate"><%= participate %>명 투표</div>
+				<div class="content-text"><%- voteInfo[i].content.replace(/\n/g, '<br>') %></div>
+
+				<% let total = voteInfo[i].voteUser.length %>
+
+				<div class="participate">총 <%= total %>명이 투표했습니다!</div>
 				<div class="vote">
 					<% if(voteInfo[i].voteItem.length) { %>
 						<% for(let q=0; q<voteInfo[i].voteItem.length; q++) { %>
+						<% let votes = [0, 0, 0, 0, 0] %>
+						<% if (voteInfo[i].voteContent[q] == null) { %>
+							<% fE = [] %>
+						<% } else { %>
+							<% fE = voteInfo[i].voteContent %>
+						<% } %>
+						<% fE.forEach(e => { votes[Number(e)] ++; }); %>
 						<div id="<%= i %>-<%= q %>" class="choice-box">
-							<a><%= voteInfo[i].voteItem[q] %></a>
-							<% participate += voteInfo[i].votes[q]; %>
+							<a><%= voteInfo[i].voteItem[q] %> - <%= Math.ceil(votes[q]/total*100*10)/10 || 0 %> %</a>
 						</div>
 						<% }%>
 					<% }%>

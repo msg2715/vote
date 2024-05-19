@@ -117,13 +117,18 @@ html, body{
     padding: 10px;
 }
 
-.contnet-information{
+.content-information{
     margin-bottom: 4px;
 }
 
 .content-nickname{
     width: 80px;
     font-size: 14px;
+}
+
+.content-date{
+    font-size: 11px;
+    opacity: 0.7;
 }
 
 .content-text{
@@ -160,4 +165,8 @@ html, body{
     font-size: 12px;
     margin-bottom: 10px;
     color: rgba(0, 0, 0, 0.6);
+}
+
+.blue {
+    border-color: rgb(0, 80, 255);
 }
